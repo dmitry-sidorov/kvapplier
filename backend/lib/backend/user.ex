@@ -18,5 +18,10 @@ defmodule Backend.User do
     user
     |> cast(attrs, [:first_name, :last_name, :email, :password, :min_salary, :desired_salary])
     |> validate_required([:first_name, :last_name, :email, :password])
+    |> validate_length(:first_name, 2..100)
+    |> validate_length(:last_name, 2..100)
+    |> validate_length(:password, 8..100)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
   end
 end
