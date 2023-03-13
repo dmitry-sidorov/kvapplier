@@ -9,6 +9,7 @@ defmodule Backend.User do
     field :last_name, :string
     field :min_salary, :integer
     field :password, :string
+    has_many :job_applications, Backend.JobApplication
 
     timestamps()
   end
